@@ -13,14 +13,14 @@ const Product = ({ data }: { data: Product }) => {
 
             <div className="px-5 pb-5">
 
-                <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                <h5 className="text-xl font-semibold tracking-tight text-gray-900 ">
                     {
                         data.name ? data.name : "No text"
                     }
                 </h5>
 
-                <div className="flex items-center justify-between">
-                    <span className="text-3xl font-bold text-gray-900 dark:text-white">$599</span>
+                <div className="flex flex-col justify-between min-[400px]:flex-row">
+                    <span className="text-[20px] font-bold text-gray-900 min-[400px]:text-3xl">$599</span>
                     <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Agregar</button>
                 </div>
             </div>
