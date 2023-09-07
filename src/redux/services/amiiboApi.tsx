@@ -3,17 +3,14 @@ import { Amiibo } from '@/types/types'
 
 export const productsApi = createApi({
     reducerPath: "productsApi",
-    refetchOnFocus: false, // when the window is refocused, refetch the data
+    refetchOnFocus: false,
     baseQuery: fetchBaseQuery({
         baseUrl: "https://www.amiiboapi.com/api/",
     }),
     endpoints: (builder) => ({
         getProducts: builder.query<Amiibo, null>({
             query: () => "amiibo",
-        }),
-        /* getUserById: builder.query<User, { id: string }>({
-            query: ({ id }) => `users/${id}`,
-        }), */
+        })
     }),
 });
 

@@ -3,32 +3,29 @@
 import { useState } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 
-import Trash from './icons/Trash'
 import ShoppingCart from './icons/ShoppingCart'
-import { useAppSelector, useAppDispatch } from "@/redux/hooks";
-import {
-    totalCartItemsSelector,
-    TotalPriceSelector,
-    increment,
-    decrement,
-    remove
-} from "@/redux/features/counterSlice";
+import { useAppSelector } from "@/redux/hooks";
+import { totalCartItemsSelector, TotalPriceSelector } from "@/redux/features/counterSlice";
+import ItemProductCart from './ItemProductCart'
 
 const Header = () => {
 
-    const router = useRouter()
-    const path = usePathname()
+    //STATES
 
-    const dispatch = useAppDispatch()
-
-    const cartItems = useAppSelector(
-        (state) => state.cart.cartItems
-    )
+    const [openShoppingCart, setOpenShoppingCart] = useState(false)
 
     const totalItems = useAppSelector(totalCartItemsSelector)
     const totalPrice = useAppSelector(TotalPriceSelector)
 
-    const [openShoppingCart, setOpenShoppingCart] = useState(false)
+    //HOOKS
+
+    const router = useRouter()
+    const path = usePathname()
+    const cartItems = useAppSelector(
+        (state) => state.cart.cartItems
+    )
+
+    //FUNCTIONS
 
     const handleRoute = () => {
         router.push("/checkout")
@@ -43,10 +40,10 @@ const Header = () => {
                     <img src="https://www.mercat.cl/wp-content/uploads/2022/05/Mercat-para-web-1.png" className="h-8 mr-3" alt="mercat Logo" />
                 </a>
                 {
-                    path === "/checkout"
+                    path === "/checkout" || path === "/"
                         ?
                         <div className='mr-[5%]'>
-                            <a className='cursor-pointer text-[18px] font-[500]' onClick={() => router.push("/products")}>
+                            <a className='select-none cursor-pointer text-[18px] font-[500]' onClick={() => router.push("/products")}>
                                 Productos
                             </a>
                         </div>
@@ -76,64 +73,7 @@ const Header = () => {
                                     <ul className='flex-1 overflow-auto'>
                                         {
                                             cartItems.map(item => {
-                                                return <li key={item.product.tail} className='flex border-[1px] p-[10px] my-[3px]'>
-                                                    <div className='w-[25%] flex items-center'>
-                                                        <img className='w-[100%]' src={item.product.image} alt="" />
-                                                    </div>
-                                                    <div className='w-[75%] p-[5px]'>
-                                                        <div className='font-[600] text-[18px] mb-[8px] flex'>
-                                                            {item.product.name}
-                                                            <Trash
-                                                                className={"w-[20px] cursor-pointer ml-auto"}
-                                                                onClick={() => dispatch(remove(item.product))}
-                                                            />
-                                                        </div>
-                                                        <div className='mb-[8px] flex justify-between'>
-                                                            <span className='font-[500] text-[15px] mr-auto'>Precio:</span>
-                                                            <span>
-                                                                $
-                                                                {
-                                                                    item.product.price
-                                                                }
-                                                            </span>
-                                                        </div>
-                                                        <div className='flex mb-[8px]'>
-                                                            <span className='font-[500] text-[15px]'>Cantidad:</span>
-                                                            <div className='ml-auto flex'>
-                                                                <div className='flex items-center justify-center' >
-                                                                    <div
-                                                                        className='select-none text-[black] font-[800] cursor-pointer px-[5px]'
-                                                                        onClick={() => dispatch(increment(item.product))}
-                                                                    >
-                                                                        +
-                                                                    </div>
-                                                                </div>
-                                                                <div className='mx-[5px]'>
-                                                                    {
-                                                                        item.qty
-                                                                    }
-                                                                </div>
-                                                                <div className='flex items-center justify-center' >
-                                                                    <div
-                                                                        className='select-none text-[black] font-[800] cursor-pointer px-[5px]'
-                                                                        onClick={() => dispatch(decrement(item.product))}
-                                                                    >
-                                                                        -
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className=' flex justify-between'>
-                                                            <span className='font-[500] text-[15px]'>Subtotal:</span>
-                                                            <span>
-                                                                $
-                                                                {
-                                                                    item.qty * item.product.price
-                                                                }
-                                                            </span>
-                                                        </div>
-                                                    </div>
-                                                </li>
+                                                return <ItemProductCart key={item.product.tail} item={item} />
                                             })
                                         }
                                         {

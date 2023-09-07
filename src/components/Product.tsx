@@ -1,6 +1,7 @@
 "use client"
 
 import React from 'react'
+
 import { Product } from '@/types/types'
 import { increment } from "@/redux/features/counterSlice";
 import { useAppDispatch } from '@/redux/hooks'
@@ -8,7 +9,13 @@ import { useAppDispatch } from '@/redux/hooks'
 
 const Product = ({ data }: { data: Product }) => {
 
+    //STATES
+
+    //HOOKS
+
     const dispatch = useAppDispatch();
+
+    //FUNCTIONS
 
     return (
         <div className=" flex flex-col bg-white border border-gray-200 rounded-lg shadow m-[30px]">
