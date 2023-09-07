@@ -39,7 +39,7 @@ const Checkout = () => {
                     {
                         cartItems.map(item => {
                             return <li key={item.product.tail} className='flex border-[1px] p-[10px] my-[3px] '>
-                                <div className='w-[20%] overflow-hidden'>
+                                <div className='w-[20%] overflow-hidden flex items-center'>
                                     <img className='w-[60%] min-w-[70px]' src={item.product.image} alt="imageProduct" />
                                 </div>
                                 <div className='w-[80%] p-[5px]'>
