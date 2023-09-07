@@ -4,10 +4,28 @@ import React from 'react'
 import { useGetProductsQuery } from '@/redux/services/amiiboApi'
 import ProductComponent from '@/components/Product'
 import { Product, Amiibo } from '@/types/types'
+import WrapperProducts from '@/components/WrapperProducts'
+
+function getRandomNumber() {
+    let min = 1
+    let max = 1000
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
 
 const getData = async () => {
     let response = await fetch("https://www.amiiboapi.com/api/amiibo")
-    return response.json()
+    return response.json().then((res: Amiibo) => {
+        return {
+            amiibo: res.amiibo.map(item => {
+                return {
+                    ...item,
+                    price: getRandomNumber()
+                }
+            })
+        }
+    })
 }
 
 const Products = async () => {
@@ -22,13 +40,7 @@ const Products = async () => {
 
     return (
 
-        <div className='grid grid-cols-1 my-[20px] min-[580px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-            {
-                data?.amiibo?.slice(0, 6).map((product: Product, index) => {
-                    return <ProductComponent key={index} data={product} />
-                })
-            }
-        </div>
+        <WrapperProducts data={data.amiibo} />
 
     )
 }

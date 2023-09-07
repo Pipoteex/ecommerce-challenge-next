@@ -12,6 +12,7 @@ interface Product {
     release: Release;
     tail: string;
     type: string;
+    price: number
 }
 
 interface Release {
@@ -21,4 +22,9 @@ interface Release {
     na: string;
 }
 
-export type { Amiibo, Product, Release }
+interface CartItem {
+    product: Product;
+    qty: number;
+}
+
+export type { Amiibo, Product, Release, CartItem }

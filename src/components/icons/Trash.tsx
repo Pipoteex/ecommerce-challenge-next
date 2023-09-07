@@ -1,10 +1,11 @@
-function Trash({ className }: { className: string }) {
+function Trash({ className, onClick }: { className: string, onClick: any }) {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             className={className}
+            onClick={onClick}
         >
             <path
                 stroke="#1C274C"

@@ -5,7 +5,7 @@ import { setupListeners } from "@reduxjs/toolkit/dist/query";
 
 export const store = configureStore({
     reducer: {
-        counterReducer,
+        cart: counterReducer,
         [productsApi.reducerPath]: productsApi.reducer,
     },
     devTools: process.env.NODE_ENV !== "production",

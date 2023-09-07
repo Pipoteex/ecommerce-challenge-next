@@ -1,8 +1,14 @@
+"use client"
 
 import React from 'react'
 import { Product } from '@/types/types'
+import { increment } from "@/redux/features/counterSlice";
+import { useAppDispatch } from '@/redux/hooks'
+
 
 const Product = ({ data }: { data: Product }) => {
+
+    const dispatch = useAppDispatch();
 
     return (
         <div className=" flex flex-col bg-white border border-gray-200 rounded-lg shadow m-[30px]">
@@ -20,8 +26,15 @@ const Product = ({ data }: { data: Product }) => {
                 </h5>
 
                 <div className="flex flex-col justify-between min-[400px]:flex-row">
-                    <span className="text-[20px] font-bold text-gray-900 min-[400px]:text-3xl">$599</span>
-                    <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Agregar</button>
+                    <span className="text-[20px] font-bold text-gray-900 min-[400px]:text-3xl">
+                        ${data.price}
+                    </span>
+                    <button
+                        className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                        onClick={() => dispatch(increment(data))}
+                    >
+                        Agregar
+                    </button>
                 </div>
             </div>
         </div>
