@@ -18,9 +18,7 @@ const ResumeToPay = () => {
         <div>
             <div className='border-[1px] rounded-[10px] shadow-md p-[30px] mt-[20px] sm:mx-[20px] sm:mt-0'>
                 <div className='text-[20px] font-[500] border-b-[1px]'>
-                    {
-
-                    }
+                    Resumen de compra:
                 </div>
                 <div className='mt-[20px] mb-[5px]'>
                     <div className='text-[16px] font-[700] flex justify-between mb-[10px]'>
