@@ -36,9 +36,14 @@ const Header = () => {
 
         <nav className="bg-white border-gray-200 shadow-md fixed top-0 w-full">
             <div className="flex items-center justify-between mx-auto p-4 relative" >
-                <a href="https://www.mercat.cl/" className="flex items-center ml-[5%]">
-                    <img src="https://www.mercat.cl/wp-content/uploads/2022/05/Mercat-para-web-1.png" className="h-8 mr-3" alt="mercat Logo" />
-                </a>
+                <div className="flex items-center ml-[5%]">
+                    <img
+                        src="https://www.mercat.cl/wp-content/uploads/2022/05/Mercat-para-web-1.png"
+                        className="h-8 mr-3 cursor-pointer"
+                        alt="mercat Logo"
+                        onClick={() => router.push("/")}
+                    />
+                </div>
                 {
                     path === "/checkout" || path === "/"
                         ?
