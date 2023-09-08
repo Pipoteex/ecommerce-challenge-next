@@ -73,7 +73,7 @@ const Header = () => {
                             {
                                 openShoppingCart
                                 &&
-                                <div className='absolute w-full top-[63px] left-0 shadow-2xl px-5 pb-5 bg-[white] flex flex-col max-h-[450px] border-t-[3px] min-[580px]:left-[-300px] min-[580px]:top-[30px] min-[580px]:w-[400px] min-[580px]:max-h-[600px] min-[580px]:border-0'>
+                                <div className='absolute w-full top-[63px] left-0 shadow-2xl px-5 pb-5 bg-[white] flex flex-col max-h-[450px] border-t-[3px] min-[580px]:left-[-300px] min-[580px]:top-[30px] min-[580px]:w-[400px] min-[580px]:max-h-[60vh] min-[580px]:border-0'>
                                     <div className='ml-auto cursor-pointer font-[700]' onClick={() => setOpenShoppingCart(false)}>X</div>
                                     <ul className='flex-1 overflow-auto'>
                                         {
